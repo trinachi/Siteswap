@@ -69,6 +69,14 @@ describe Siteswap do
     it "is false if a 3-throw pattern is not repeated" do
       Siteswap.repeat?([4, 2, 3, 3, 2, 4]).should be_false
     end
+    
+    it "is true if a 4-throw pattern is repeated" do
+      Siteswap.repeat?([4, 2, 3, 4, 4, 2, 3, 4]).should be_true
+    end
+    
+    it "is false if a 4-throw pattern is not repeated" do
+      Siteswap.repeat?([4, 2, 3, 4, 4, 2, 3, 5]).should be_false
+    end
   end
     
   describe "valid_patterns" do

@@ -16,7 +16,7 @@ class Siteswap
   end
   
   def patterns
-    throws = (1..6).to_a
+    throws = (0..6).to_a
     patterns = throws.repeated_permutation(@pattern_length).to_a
     return patterns
   end
@@ -49,11 +49,9 @@ class Siteswap
   end
 
   def self.repeat?(current)
-    return false if current.length == 1
-    return true if current.uniq.length == 1
-    
+    return true if current.uniq.length == 1 && current.length > 1
     length = current.length
-    (2..3).each do |x|
+    (2..length).each do |x|
       if length%x == 0 && length/x >= 2
         slices = []
         current.each_slice(x) {|a| slices << a }
