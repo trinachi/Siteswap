@@ -32,8 +32,8 @@ class Siteswap
   def is_valid?(current, sum)
     correct_number?(sum) && 
     good_first_throw(current) && 
-    correct_timing(current) == true &&
-    does_not_repeat(current)
+    correct_timing(current) &&
+    Siteswap.repeat?(current) == false
   end
   
   def correct_number?(number)
@@ -47,10 +47,20 @@ class Siteswap
   def good_first_throw(current)
     current[0] > 2
   end
-  
-  def does_not_repeat(current)
-    current.delete_if { current.min == current.max }
-    # should delete patterns like 3131 and 423423 and 313131. However, 31313X is fine
+
+  def self.repeat?(current)
+    return false if current.length == 1
+    return true if current.uniq.length == 1
+    
+    length = current.length
+    (2..3).each do |x|
+      if length%x == 0 && length/x >= 2
+        slices = []
+        current.each_slice(x) {|a| slices << a }
+        return true if slices.uniq.length == 1
+      end
+    end
+    return false
   end
 
   def correct_timing(current)

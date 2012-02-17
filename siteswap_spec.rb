@@ -32,12 +32,42 @@ describe Siteswap do
     end
   end
   
-  describe "does_not_repeat" do
-    it "doesn't return multi-throw patterns where the base sequence repeats" do
-      siteswap = Siteswap.new(6, 3)
-      siteswap.does_not_repeat([3, 3, 3, 3, 3, 3]).should be_empty
-      # siteswap.does_not_repeat([4, 2, 3, 3, 2, 4]).should_not be_empty
-      # siteswap.does_not_repeat([4, 2, 3, 4, 2, 3]).should be_empty
+  describe "repeat?" do
+    it "is false if there is only one item" do
+      Siteswap.repeat?([1]).should be_false
+    end
+
+    it "is true if there are only two items and they are the same" do
+      Siteswap.repeat?([1, 1]).should be_true
+      Siteswap.repeat?([1, 2]).should be_false
+    end
+
+    it "is true if everything in the array is the same" do
+      Siteswap.repeat?([1, 1, 1]).should be_true
+    end
+    
+    it "is false if there are two items that are different" do
+      Siteswap.repeat?([1, 2]).should be_false
+    end
+    
+    it "is false if the length is odd number" do
+      Siteswap.repeat?([1, 2, 3]).should be_false
+    end
+    
+    it "is true if the pattern is repeated" do
+      Siteswap.repeat?([1, 2, 1, 2]).should be_true
+    end
+
+    it "is true if a pattern is repeated three times" do
+      Siteswap.repeat?([1, 2, 1, 2, 1, 2]).should be_true
+    end
+    
+    it "is true if a 3-throw pattern is repeated" do
+      Siteswap.repeat?([4, 2, 3, 4, 2, 3]).should be_true
+    end
+     
+    it "is false if a 3-throw pattern is not repeated" do
+      Siteswap.repeat?([4, 2, 3, 3, 2, 4]).should be_false
     end
   end
     
