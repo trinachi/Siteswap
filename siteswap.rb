@@ -12,6 +12,10 @@ class Siteswap
     @objects = gets.chomp.to_i
     puts "Pattern length:"
     @pattern_length = gets.chomp.to_i
+    puts "Required sequence:"
+    @required_sequence = gets.chomp.to_s
+    puts "Excluded sequence:"
+    @excluded_sequence = gets.chomp.to_s
     puts valid_patterns.map {|x| x.to_s }
   end
   
@@ -37,7 +41,9 @@ class Siteswap
     correct_number?(sum) && 
     good_first_throw(current) && 
     correct_timing(current) &&
-    Siteswap.repeat?(current) == false
+    Siteswap.repeat?(current) == false &&
+    inclusion(current) &&
+    exclusion(current)
   end
   
   def correct_number?(number)
@@ -74,6 +80,14 @@ class Siteswap
       end
     end
     return false
+  end
+  
+  def inclusion(current)
+    current.to_s.include? @required_sequence
+  end
+  
+  def exclusion(current)
+    !current.to_s.include? @excluded_sequence
   end
 end
 
