@@ -17,7 +17,7 @@ class Siteswap
   
   def patterns
     throws = (0..6).to_a
-    patterns = throws.repeated_permutation(@pattern_length).to_a
+    patterns = throws.repeated_permutation(@pattern_length)
     return patterns
   end
   
@@ -27,6 +27,10 @@ class Siteswap
       acc << current if is_valid?(current, sum)
       acc
     }
+  end
+  
+  def sum(sequence)
+    sequence.inject(:+)
   end
 
   def is_valid?(current, sum)
@@ -39,13 +43,24 @@ class Siteswap
   def correct_number?(number)
     number/@pattern_length == @objects && number % @pattern_length == 0
   end
-
-  def sum(sequence)
-    sequence.reduce { |sum, x| sum + x } 
-  end
   
   def good_first_throw(current)
     current[0] > 2
+  end
+  
+  def correct_timing(current)
+    # to-do: amend "double" so that it appends current.last number of array items to the end
+    double = current*2
+    throws = double.dup
+    catches = [nil] * (double.length - 1)
+    throws.each_with_index do |duration, index|
+      if catches[index+duration]
+        return false
+      else
+        catches[index+duration] = true
+      end
+    end
+    return true
   end
 
   def self.repeat?(current)
@@ -59,17 +74,6 @@ class Siteswap
       end
     end
     return false
-  end
-
-  def correct_timing(current)
-    double = current*2
-    length = double.length - 1
-    (0..(length - 1)).each do |x|
-      ((x+1)..length).each do |y| 
-        return false if y-x == double[x]-double[y]
-      end
-    end
-    return true
   end
 end
 
