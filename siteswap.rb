@@ -64,10 +64,8 @@ class Siteswap
   end
   
   def correct_timing(current)
-    # to-do: amend "double" so that it appends current.last number of array items to the end
-    double = current*2
-    throws = double.dup
-    catches = [nil] * (double.length - 1)
+    throws = length_check(current)
+    catches = [nil] * (current.length + current.last)
     throws.each_with_index do |duration, index|
       if catches[index+duration]
         return false
@@ -76,6 +74,17 @@ class Siteswap
       end
     end
     return true
+  end
+  
+  def length_check(current)
+    more = 1
+    extended = current.dup
+    while extended.last > (extended.length - current.length)
+      more += 1
+      extended = current*more
+    end
+    extended.pop(extended.length - (current.last + current.length))
+    return extended
   end
 
   def self.repeat?(current)

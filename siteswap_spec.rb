@@ -91,6 +91,7 @@ describe Siteswap do
       siteswap = Siteswap.new(3, 3)
       siteswap.require_pattern "41"
       siteswap.inclusion([4, 4, 1]).should be_true
+      siteswap.inclusion([3, 6, 0]).should be_false
     end
   end
   
@@ -99,6 +100,19 @@ describe Siteswap do
       siteswap = Siteswap.new(3, 3)
       siteswap.exclude_pattern "41"
       siteswap.exclusion([4, 4, 1]).should be_false
+      siteswap.exclusion([3, 6, 0]).should be_true
+    end
+  end
+  
+  describe "length_check" do
+    it "creates an array that is 5 longer than the original array" do
+      siteswap = Siteswap.new(3, 3)
+      siteswap.length_check([4, 0, 5]).should == ([4, 0, 5, 4, 0, 5, 4, 0])
+    end
+    
+    it "creates an array that is 3 longer than the original array" do
+      siteswap = Siteswap.new(3, 3)
+      siteswap.length_check([3, 4, 2]).should == ([3, 4, 2, 3, 4, 2])
     end
   end
 end
