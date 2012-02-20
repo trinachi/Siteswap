@@ -64,7 +64,7 @@ class Siteswap
   end
   
   def correct_timing(current)
-    throws = length_check(current)
+    throws = adjusted_length(current)
     catches = [nil] * (current.length + current.last)
     throws.each_with_index do |duration, index|
       if catches[index+duration]
@@ -76,15 +76,24 @@ class Siteswap
     return true
   end
   
-  def length_check(current)
+  def adjusted_length(current)
     more = 1
     extended = current.dup
-    while extended.last > (extended.length - current.length)
+    while required_length(current) > extended.length
       more += 1
       extended = current*more
     end
-    extended.pop(extended.length - (current.last + current.length))
+    extended.pop(extended.length - required_length(current))
     return extended
+  end
+  
+  def required_length(current)
+    ordered = []
+    current.each_with_index do |x, index|
+      ordered << x + index + 1
+      ordered.sort!
+    end
+    return ordered.last
   end
 
   def self.repeat?(current)

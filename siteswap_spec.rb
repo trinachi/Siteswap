@@ -104,15 +104,15 @@ describe Siteswap do
     end
   end
   
-  describe "length_check" do
+  describe "adjusted_length" do
     it "creates an array that is 5 longer than the original array" do
       siteswap = Siteswap.new(3, 3)
-      siteswap.length_check([4, 0, 5]).should == ([4, 0, 5, 4, 0, 5, 4, 0])
+      siteswap.adjusted_length([4, 0, 5]).should == ([4, 0, 5, 4, 0, 5, 4, 0])
     end
     
     it "creates an array that is 3 longer than the original array" do
       siteswap = Siteswap.new(3, 3)
-      siteswap.length_check([3, 4, 2]).should == ([3, 4, 2, 3, 4, 2])
+      siteswap.adjusted_length([3, 4, 2]).should == ([3, 4, 2, 3, 4, 2])
     end
   end
 end
