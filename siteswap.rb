@@ -16,6 +16,7 @@ class Siteswap
     @required_sequence = gets.chomp.to_s
     puts "Excluded sequence:"
     @excluded_sequence = gets.chomp.to_s
+    puts "Patterns:"
     puts valid_patterns.map {|x| x.to_s }
   end
   
@@ -23,6 +24,14 @@ class Siteswap
     throws = (0..6).to_a
     patterns = throws.repeated_permutation(@pattern_length)
     return patterns
+  end
+  
+  def require_pattern(pattern)
+    @required_sequence = pattern
+  end
+  
+  def exclude_pattern(pattern)
+    @excluded_sequence = pattern
   end
   
   def valid_patterns
@@ -83,11 +92,15 @@ class Siteswap
   end
   
   def inclusion(current)
-    current.to_s.include? @required_sequence
+    return true if @required_sequence == nil || current.to_s.include?(@required_sequence)
   end
   
   def exclusion(current)
-    !current.to_s.include? @excluded_sequence
+    return true if @excluded_sequence == nil
+    if @excluded_sequence.length > 0 && current.to_s.include?(@excluded_sequence)
+      return false 
+    end
+    return true
   end
 end
 

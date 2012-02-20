@@ -80,25 +80,25 @@ describe Siteswap do
   end
     
   describe "valid_patterns" do 
-    it "returns valid patterns" do pending
+    it "returns valid patterns" do
       siteswap = Siteswap.new(2, 3)
       siteswap.valid_patterns.should include([4, 2], [5, 1])
     end
   end
   
   describe "inclusion" do 
-    it "only returns patterns that include [4, 1]" do pending
+    it "only returns patterns that include [4, 1]" do
       siteswap = Siteswap.new(3, 3)
-      @required_sequence = "41"
+      siteswap.require_pattern "41"
       siteswap.inclusion([4, 4, 1]).should be_true
     end
   end
   
   describe "exclusion" do
-    it "doesn't return patterns that include [4, 1]" do
+    it "excludes patterns that contain [4, 1]" do
       siteswap = Siteswap.new(3, 3)
-      @excluded_sequence = "41"
-      siteswap.exclusion([4, 4, 1]).should be_true
+      siteswap.exclude_pattern "41"
+      siteswap.exclusion([4, 4, 1]).should be_false
     end
   end
 end
