@@ -1,0 +1,94 @@
+body, header, hgroup, h1, h2 {
+	margin: 0;
+	padding: 0;
+}
+
+header, hgroup, section, article, footer {
+	display: block;
+}
+
+li {
+	list-style-type: none;
+}
+
+header {
+	width: 100%;
+	height: 60px;
+	background: #e3e3e3;
+}
+
+header hgroup {
+	width: 700px;
+	margin: 0 auto;
+	padding-top: 20px;
+}
+
+header h1 {
+	float: left;
+	font-size: 2em;
+	font-weight: normal;
+}
+
+header h2 {
+	margin-top: 12px;
+	float: right;
+	font-size: 1.25em;
+	font-weight: normal;
+}
+
+#main {
+	width: 640px;
+	margin: 0 auto;
+	border: 1px solid #e3e3e3;
+	padding: 30px;
+}
+
+form {
+	width: 640px;
+}
+
+form h2 {
+	width: 610px;
+	height: 20px;
+	padding: 15px;
+	background: #e3e3e3;
+	font-weight: normal;
+	text-align: center;
+	position: relative;
+	clear: both;
+}
+
+form h4 {
+	line-height: 0;
+	font-weight: normal;
+	font-size: 1em;
+	text-align: center;
+}
+
+form ul {
+	position: relative;
+	width: 610px;
+	margin: 20px 0;
+	display: block;
+	clear: both;
+}
+
+form li {
+	position: relative;
+	float: left;
+	margin: 0 0 20px 0;
+	width: 300px;
+}
+
+form input {
+	margin-left: 75px;
+}
+
+.button {
+	float: right;
+}
+
+.clear {
+	clear: both;
+	border: 0;
+}
