@@ -20,6 +20,31 @@ class Siteswap
     puts valid_patterns.map {|x| x.to_s }
   end
   
+  def values
+    "<form action='/patterns' name='all_values' method='post'>         
+    Props: 
+    <input name='props' type='text' /><br />
+    Pattern length:
+    <input name='length' type='text' /><br />
+    Required sequence:
+    <input name='required' type='text' /><br />
+    Excluded sequence:
+    <input name='excluded' type='text' /><br />
+    <input type='submit' value='go' />
+    </form>"
+  end
+  
+  def all_patterns
+    "<p>#{valid_patterns.map { |x| x.to_s + ", " }}</p>"
+  end
+  
+  def get_values(props, length, required, excluded)
+    @objects = props.to_i
+    @pattern_length = length.to_i
+    @required_sequence = required
+    @excluded_sequence = excluded
+  end
+  
   def patterns
     throws = (0..6).to_a
     patterns = throws.repeated_permutation(@pattern_length)
