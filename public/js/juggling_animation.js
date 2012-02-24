@@ -1,12 +1,10 @@
 function findPattern() {
-	// var pattern = [4, 4, 1];
 	$('.pattern').click(function() {
 		$(this).addClass("red");
 		var patterns = $(this).text().split('');
 		var pattern =  $.each(patterns, function(k, v) {
 			parseInt(v);
 		});
-		console.log(pattern);
 		addListItems(pattern);
 	});
 };
@@ -25,6 +23,4 @@ for ( var i = 1; i <= pattern.length; i++ ) {
 $(document).ready(function() {
 	findPattern();
 });
-
-console.log(findPattern());
 
