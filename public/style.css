@@ -92,3 +92,7 @@ form input {
 	clear: both;
 	border: 0;
 }
+
+section span {
+	margin-right: 10px;
+}

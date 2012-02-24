@@ -9,9 +9,6 @@ get '/' do
 end
 
 post '/patterns' do
-  # html = ""
   @@siteswap.get_values(params[:props], params[:length], params[:required], params[:excluded])
   erb :valid_patterns
-  # html << @@siteswap.all_patterns
-  # return html
 end

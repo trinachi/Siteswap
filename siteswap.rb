@@ -35,7 +35,7 @@ class Siteswap
   end
   
   def all_patterns
-    "<p>#{valid_patterns.map { |x| x.to_s + ", " }}</p>"
+    "<div>#{valid_patterns.map { |x| "<span class='pattern'>" + x.to_s + "</span>" }}</div>"
   end
   
   def get_values(props, length, required, excluded)

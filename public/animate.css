@@ -1,0 +1,212 @@
+/* main elements */ 
+
+#main {
+	width: 250px;
+	margin: 0 auto;
+}
+
+#canvas {
+	border: 1px solid black;
+	width: 250px;
+	height: 400px;
+	position: relative;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style-type: none;
+}
+
+/* style guide *************
+
+* #canvas li = rotating div, creates curved path
+* .l(#) & .r(#) = originating left or right, number represents throw height
+* .t(#) = throw number, defines delay and color of object
+
+***************************/
+
+#canvas li { 
+	height: 22px;
+	bottom: 0px; 
+	position: absolute;
+}  
+
+/* left throw */
+
+.l1, .r1 {
+	width: 22px;
+	left: 20px;
+	-webkit-animation-duration: 1s;  
+}
+
+.l1 {
+	-webkit-animation-name: l1;
+}
+
+@-webkit-keyframes l1 {
+	0% { }
+	100% { left: 200px; }
+}
+
+.r1 {
+	-webkit-animation-name: r1;
+}
+
+@-webkit-keyframes r1 {
+	0% { left: 200px; }
+	100% {left: 20px; }
+}
+
+.l2, .r2 {
+	width: 22px;
+	-webkit-animation-duration: 2s;
+}
+
+.l2 { 
+	left: 20px;
+	-webkit-animation-name: l2;
+}
+
+.r2 { 
+	left: 200px;
+	-webkit-animation-name: r2;
+}
+
+@-webkit-keyframes l2  {
+	0% { }
+	50% { bottom: 50px; }
+	100% { bottom: 0px; }
+}
+
+@-webkit-keyframes r2 {
+	0% { }
+	50% { bottom: 50px; }
+	100% { bottom: 0px; }
+}
+
+.l3 {
+	width: 100px;
+	left: 20px;
+	-webkit-animation-duration: 3s;  
+	-webkit-animation-name: l3;
+}
+  
+@-webkit-keyframes l3 {  
+0% { bottom: 0px; 
+	}
+
+50% {
+	-webkit-transition: all 1s ease-out;
+	bottom: 100px;
+	-webkit-transform: rotate(90deg);
+	-webkit-transform-origin: 100px;
+	} 
+
+100% { 
+	-webkit-transition: all 1s ease-in;
+	bottom: 0px; 
+	-webkit-transform: rotate(180deg);    
+	-webkit-transform-origin: 100px;
+  }  
+}
+
+.r3 {
+	left: 120px;
+	width: 100px;
+	-webkit-animation-duration: 3s;  
+	-webkit-animation-name: r3;
+}
+  
+@-webkit-keyframes r3 {  
+0% {  
+	bottom: 0px; 
+	-webkit-transform: rotate(0deg); 
+  }
+
+50% {
+	bottom: 100px;
+	-webkit-transform: rotate(-90deg);
+	-webkit-transform-origin: 0px;
+} 
+
+100% { 
+	bottom: 0px; 
+	-webkit-transform: rotate(-180deg);
+	-webkit-transform-origin: 0px;
+  }  
+}
+
+.l4, .r4 {
+	width: 22px;
+	-webkit-animation-duration: 4s;
+}
+
+.l4 { 
+	left: 20px;
+	-webkit-animation-name: l4;
+}
+
+.r4 { 
+	left: 200px;
+	-webkit-animation-name: r4;
+}
+
+@-webkit-keyframes l4  {
+	0% { }
+	50% { bottom: 150px; }
+	100% { bottom: 0px; }
+}
+
+@-webkit-keyframes r4 {
+	0% { }
+	50% { bottom: 150px; }
+	100% { bottom: 0px; }
+}
+
+.t2 {
+	-webkit-animation-delay: 1s;
+}
+
+.t3 {
+	-webkit-animation-delay: 2s;
+}
+
+/* balls */
+
+.ball {
+	border-radius: 22px;
+	height: 22px;
+	width: 22px;
+}
+
+.red {
+	color: red;
+}
+
+.r3 .ball {
+	float: right;
+}
+
+.t1 .ball {
+	background: red;
+}
+
+.t2 .ball {
+	background: blue;
+}
+
+.t3 .ball {
+	background: yellow;
+}
+
+.t4 .ball {
+	background: green;
+}
+
+.t5 .ball {
+	background: orange;
+}
