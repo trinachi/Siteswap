@@ -48,8 +48,8 @@ li {
 }
 
 @-webkit-keyframes l1 {
-	0% { }
-	100% { left: 200px; }
+	0% {left: 20px;}
+	100% {left: 200px;}
 }
 
 .r1 {
@@ -57,8 +57,8 @@ li {
 }
 
 @-webkit-keyframes r1 {
-	0% { left: 200px; }
-	100% {left: 20px; }
+	0% {left: 200px;}
+	100% {left: 20px;}
 }
 
 .l2, .r2 {
@@ -263,6 +263,10 @@ li {
 	-webkit-animation-delay: 4s;
 }
 
+.testing {
+	border: 2px solid black;
+}
+
 /* balls */
 
 .ball {
@@ -275,26 +279,26 @@ li {
 	color: red;
 }
 
-.r3 .ball {
+.r3 .ball, .r5 .ball {
 	float: right;
 }
 
-.t1 .ball {
+li:nth-child(1) .ball {
 	background: red;
 }
 
-.t2 .ball {
+li:nth-child(2) .ball {
 	background: blue;
 }
 
-.t3 .ball {
+li:nth-child(3) .ball {
 	background: yellow;
 }
 
-.t4 .ball {
+li:nth-child(4) .ball {
 	background: green;
 }
 
-.t5 .ball {
+li:nth-child(5) .ball {
 	background: orange;
 }
