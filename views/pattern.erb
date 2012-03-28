@@ -2,13 +2,21 @@
 	<form action='/patterns' name='all_values' method='post'>
 		<h2>Basic Controls</h2> 
 		<ul>         
-			<li>
+			<li id="props">
 				<h4>Number of Props</h4>
-				<input name='props' type='text' />
+				<input type="radio" name='props' value="1" />
+				<input type="radio" name='props' value="2" />
+				<input type="radio" name='props' value="3" checked="checked" />
+				<input type="radio" name='props' value="4" />
+				<input type="radio" name='props' value="5" />
 			</li>
 			<li>
 				<h4>Pattern Length</h4>
-				<input name='length' type='text' />
+				<input type="radio" name='length' value="1" />
+				<input type="radio" name='length' value="2" />
+				<input type="radio" name='length' value="3" checked="checked" />
+				<input type="radio" name='length' value="4" />
+				<input type="radio" name='length' value="5" />
 			</li>
 		</ul>
 		<h2>Advanced Controls</h2>
@@ -21,7 +29,16 @@
 				<h4>Exclude</h4>
 				<input name='excluded' type='text' />
 			</li>
+			<li>
+				<h4>Minimum Throw Height</h4>
+				<input name='min' type='text' />
+			</li>
+			<li>
+				<h4>Maximum Throw Height</h4>
+				<input name='max' type='text' />	
+			</li>
 		</ul>
 		<input class="button" type='submit' value='go' />
 	</form>
+
 </section>
